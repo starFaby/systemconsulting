@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ super() }}
+Product update
+{% endblock%}
+{% block content %}
+<section class="p-4">
+    <div class="well text-center">Formulario Update de Categoria</div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="p-4 col-md-4">
+            <form action="{{ url_for('racco.onGetControllerAdminConsultaUpdate', id=consulta.pfspcrconsultid) }}" method="post">
+                <div class="form-group">
+                    <label for="txtSeccion">Seccion</label>
+                    <input type="text" class="form-control" id="txtSeccion" name="txtSeccion"
+                        aria-describedby="emailHelp" placeholder="Seccion..." value="{{consulta.pfspcrconsultseccion}}">
+                </div>
+                <div class="form-group">
+                    <label for="txtNum">Num</label>
+                    <input type="text" class="form-control" id="txtNum" name="txtNum" aria-describedby="emailHelp"
+                        placeholder="Num..." value="{{consulta.pfspcrconsultnum}}">
+                </div>
+                <div class="form-group">
+                    <label for="txtNombre">Nombre</label>
+                    <input type="text" class="form-control" id="txtNombre" name="txtNombre" aria-describedby="emailHelp"
+                        placeholder="Nombre..." value="{{consulta.pfspcrconsultnombre}}">
+                </div>
+                <div class="form-group">
+                    <label for="txtImage">Image</label>
+                    <input type="text" class="form-control" id="txtImage" name="txtImage" placeholder="Image..." value="{{consulta.pfspcrconsultimage}}">
+                </div>
+                <div class="form-group">
+                    <label for="txtDetalle">Detalle</label>
+                    <input type="text" class="form-control" id="txtDetalle" name="txtDetalle" placeholder="Detalle..." value="{{consulta.pfspcrconsultdetalle}}">
+                </div>
+                <div class="form-group">
+                    <label for="txtUrl">Url</label>
+                    <input style="pointer-events: all;" type="text" class="form-control" id="txtUrl" name="txtUrl"
+                        placeholder="Url..." value="{{consulta.pfspcrconsulturl}}">
+                </div>
+                <div class="form-group">
+                    <label for="selectEstado">Estado</label>
+                    <select class="form-control" id="selectEstado" name="selectEstado">
+                        <option selected>Elija...</option>
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="selectCategoria">Categoria</label>
+                    <select class="form-control" id="selectCategoria" name="selectCategoria">
+                        <option selected>Elija...</option>
+                        {% for item in categorias %}
+                        <option value="{{item.pfspcrcateid}}">{{item.pfspcrcatenombre}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i>Guardar</button>
+            </form>
+        </div>
+        <div class="p-4 col-md-4 d-flex justify-content-center">
+            <img style="width: 25vw ; height: 25vw;" src="{{consulta.pfspcrcateimage}}" alt="">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</section>
+{% endblock %}
